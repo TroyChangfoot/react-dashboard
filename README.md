@@ -1,46 +1,116 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🧭 React Admin Dashboard
 
-## Available Scripts
+A modern **React + Chakra UI** admin dashboard that consumes a **Django REST API** backend.  
+It provides full CRUD interfaces for **Products**, **Customers**, and **Orders**, plus a smart dashboard overview with metrics and statistics.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ⚡ **Full CRUD** for Products, Customers, and Orders  
+- 💳 Dynamic Order Management (with multiple order items)  
+- 📊 Dashboard Overview with Order, Product, and Customer stats  
+- 💰 Real-time revenue totals and low-stock alerts  
+- 🔐 JWT Authentication-ready API integration  
+- 🎨 Built with **Chakra UI 2.10.9** + **TypeScript**  
+- 📱 Responsive layout and clean design  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧱 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer | Technology |
+|-------|-------------|
+| Frontend | React 18, TypeScript, Chakra UI 2.10.9 |
+| Charts | Recharts (for upcoming dashboard analytics) |
+| API | Django REST Framework + JWT |
+| Styling | Tailwind (optional) + Chakra Theme |
+| HTTP | Axios client with JWT interceptor |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1️⃣ Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+### 2️⃣ Configure API endpoint
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+In `/src/api/axiosClient.ts`, update your backend base URL:
+```ts
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8000/api", // update if needed
+});
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3️⃣ Run the app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This launches the development server on `http://localhost:3000`.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📂 Folder Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+react-dashboard/
+├── src/
+│   ├── api/              # Axios client configuration
+│   ├── components/       # Shared components (Sidebar, Topbar, etc.)
+│   ├── layouts/          # Layout wrappers
+│   ├── pages/            # Core pages (Dashboard, Products, Orders, Customers)
+│   ├── theme.ts          # Chakra theme customization
+│   ├── App.tsx           # Router setup
+│   └── index.tsx         # App entrypoint
+└── package.json
+```
+
+---
+
+## 📈 Dashboard Metrics
+
+The **DashboardHome** page aggregates live stats from the Django API:
+- Total Orders
+- Orders by status (Pending / Paid / Shipped)
+- Total Revenue (in Rand)
+- Total Products (with low-stock detection)
+- Total Customers
+
+---
+
+## 🔒 Authentication
+
+The project is structured for easy JWT integration:
+- Add login flow (`Login.tsx`) to store token in localStorage.
+- Axios client automatically sends `Authorization: Bearer <token>`.
+- Protected routes can be wrapped with a `ProtectedRoute` component.
+
+---
+
+## 🧩 Future Enhancements
+
+- 📊 Add charts with Recharts (sales trends, order distribution)
+- 🌈 Dark mode toggle via Chakra theme
+- 🧠 Pagination & filtering in CRUD tables
+- 🪄 Editable in-table CRUD interactions
+
+---
+
+## 🧑‍💻 Developer Notes
+
+- Compatible with React 18+
+- Chakra 2.10.9 is used (for Modal, Table, Stat, etc.)
+- Designed for smooth integration with the Django CRUD API backend
+
+---
+
+## 🪪 License
+
+MIT © 2025 Troy Changfoot
